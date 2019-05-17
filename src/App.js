@@ -4,6 +4,8 @@ import React from "react";
 import Hello from "./Hello";
 import PureRedux from "./components/PureRedux";
 import ReduxReact from "./components/ReduxReact";
+import ActualUse from "./components/ActualUse";
+// import withTimer from "./components/HighComponent";
 import "./App.css";
 
 const styles = {
@@ -45,7 +47,8 @@ const routeMap = {
   // suspense: Suspense,
   hello: Hello,
   "pure-redux": PureRedux,
-  "react-redux": ReduxReact
+  "react-redux": ReduxReact,
+  "actual-use": ActualUse
 };
 
 class App extends React.PureComponent {
