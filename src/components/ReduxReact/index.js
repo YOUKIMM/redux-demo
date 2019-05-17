@@ -61,10 +61,22 @@ function mapStateToProps(state) {
   };
 }
 
+// 把一个 value 为不同 action creator 的对象，转成拥有同名 key 的对象。
+// 同时使用 dispatch 对每个 action creator 进行包装，以便可以直接调用它们
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ plusOne, minusOne }, dispatch);
 }
 
+// 连接 React 组件与 Redux store。
+
+// 只要定义了mapStateToProps，组件将会监听 Redux store 的变化。任何时候，
+// 只要 Redux store 发生改变，mapStateToProps 函数就会被调用
+// 该回调函数必须返回一个纯对象，这个对象会与组件的 props 合并。如果你省略了这个参数，
+// 你的组件将不会监听 Redux store。
+
+// mapDispatchToProps如果传递的是一个对象，那么每个定义在该对象的函数都将被当作 Redux action creator，
+// 对象所定义的方法名将作为属性名；每个方法将返回一个新的函数，函数中dispatch方法会将
+// action creator 的返回值作为参数执行。这些属性会被合并到组件的 props 中。
 const ConnectedCounter = connect(
   mapStateToProps,
   mapDispatchToProps
